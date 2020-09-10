@@ -1,24 +1,31 @@
-# README
+# Helpful ATM
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is...
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+...
 
-* System dependencies
+## Run it locally
 
-* Configuration
+If you don't have the following installed on your machine, I recommend installing them with the respective versions:
+* Ruby 2.6.5
+* Rails 6.0.3.2
+* PostgreSQL 12.2
 
-* Database creation
 
-* Database initialization
+To run it locally, clone this repo and run these commands:
+```
+$ gem install bundler
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+$ rails s
+```
 
-* How to run the test suite
+## Used gems
+### For testing
+* rspec-rails
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Testing
+...

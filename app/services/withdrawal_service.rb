@@ -5,8 +5,6 @@ attr_reader :amount
     @amount = amount.to_i
   end
 
-  private
-
   def notes_amount
     {
       :G => (amount / 100),

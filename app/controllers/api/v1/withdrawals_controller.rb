@@ -1,6 +1,9 @@
 class Api::V1::WithdrawalsController < Api::V1::BaseController
   before_action :set_withdrawal, only: [:show]
 
+  def index
+  end
+  
   def show
   end
 

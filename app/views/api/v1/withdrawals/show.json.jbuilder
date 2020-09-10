@@ -1,1 +1,1 @@
-json.extract! @withdrawal, :amount, :banknotes
+json.extract! @withdrawal, :id, :amount, :banknotes

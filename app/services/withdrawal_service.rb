@@ -6,12 +6,14 @@ attr_reader :amount
   end
 
   def notes_amount
-    {
+    unless amount < 10
+      {
       :G => (amount / 100),
       :O=> (amount % 100 / 50),
       :M => (amount % 100 % 50 / 20),
       :A => (amount % 100 % 50 % 20 / 10),
      }.reject {|_, v| v == 0}
+    end
   end
 
   # FUN FACT! G-O-M-A represents the abbreviated names of the animals in Brazilian bills

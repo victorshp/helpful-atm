@@ -49,7 +49,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   # Unit testing with Rspec
-  gem 'rspec-rails'
+  gem 'rspec-rails', '>=4.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

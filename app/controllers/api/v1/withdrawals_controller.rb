@@ -9,7 +9,14 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   end
 
   def create
-    @withdrawal = Withdrawal.new(withdrawal_params)
+    withdrawal = Withdrawal.new(withdrawal_params)
+    withdrawal.banknotes = WithdrawalService.new(withdrawal).notes_amount
+    if withdrawal.successful
+      withdrawal.save!
+      render nothing: true, status: :created
+    else
+      render json: @withdrawal
+    end
   end
 
   private
@@ -19,7 +26,7 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   end
 
   def withdrawal_params
-    params.require(:withdrawal).permit(:amount, :banknotes)
+    params.require(:withdrawal).permit(:amount)
   end
 
 end

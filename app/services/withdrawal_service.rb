@@ -2,11 +2,14 @@ class WithdrawalService
 attr_reader :amount
 
   def initialize(amount)
+    # Class methods will give relevant output when employed if user instanciates it with an Integer argument.
     @amount = amount.class == Integer ? amount.to_i : nil
   end
 
   def notes_amount
+    # Employ bank notes logic only if @amount => 10 and is an Integer
     unless amount < 10
+      # Return a Hash that gives the amount of each respective bill (bank note) the user shall withdraw
       {
       :G => (amount / 100),
       :O=> (amount % 100 / 50),
@@ -20,10 +23,10 @@ attr_reader :amount
 
   def save_record(event)
     if event.valid? && event.save
-      @success = true
+      @successful = true
       @record = find_event(event.id)
     else
-      @success = false
+      @successful = false
       @errors = event.errors.full_messages
     end
   end

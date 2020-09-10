@@ -1,6 +1,6 @@
 # Helpful ATM
 
-This application is an API where one can withdraw money starting with the largest bills. The app will analyze the value the user wants to withdraw and show how many of each respective bills (bank notes) they can receive.
+This Ruby on Rails application is an API where one can withdraw money starting with the largest bills. The app will analyze the value the user wants to withdraw and show how many of each respective bills (bank notes) they can receive.
 
 These are the existing bills:
 * 100
@@ -33,7 +33,7 @@ TAKE IT! It's OURS :wink:
 ### User Stories
 Using this API, we have the 
 * AN AUTHENICATED USER CAN Withdraw bank notes and save their transaction history.
-* AN AUTHENICATED USER CAN View their previous transaction histories as a whole.
+* AN AUTHENICATED USER CAN View their previous transaction histories as a whole and when each transaction occurred.
 * AN AUTHENTICATED USER CAN Withdraw bank notes, but can't save their transaction logs.
 
 In simple words, its a CRU(~D~) application that serves as an ATM machine.
@@ -77,7 +77,7 @@ For development
 For testing
 
 * rspec-rails (only test environment)
-* Manual Testing ;) (NOT A GEM, BUT CAREFUL HUMAN LABOR)
+* Manual Testing :wink: (NOT A GEM, BUT ATTENTIVE HUMAN WORK)
 
 ## Testing
 ### How to test this app locally

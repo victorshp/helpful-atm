@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root to: 'api/v1/withdrawals#index'
+  devise_for :users
+  root to: 'api/v1/withdrawals#index', defaults: {:format=>:json}
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

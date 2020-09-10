@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+
+  root to: 'api/v1/withdrawals#index'
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :withdrawals, only: [ :create ]
+      resources :withdrawals, only: [ :index, :show, :create ]
     end
   end
 end

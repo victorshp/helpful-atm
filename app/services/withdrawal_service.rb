@@ -2,7 +2,7 @@ class WithdrawalService
 attr_reader :amount
 
   def initialize(amount)
-    @amount = amount.to_i
+    @amount = amount.class == Integer ? amount.to_i : nil
   end
 
   def notes_amount

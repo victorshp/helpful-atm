@@ -8,7 +8,19 @@ These are the existing bills:
 * 20
 * 10
 
-`So a $180 withdrawal will provide the user with one of each bill and a $90 withdrawal would amount to 1 bill of $50 and 2 bills of $20.`
+`# So a $180 withdrawal will provide the user with one of each bill and a $90 withdrawal would amount to 1 bill of $50 and 2 bills of $20.`
+
+# Table of contents
+- [General Information](#general-information)
+  - [User Stories](#user-stories)
+- [CRUD Operations](#crud-operations)
+  - [Create](#create)
+- [Interactivity](#interactivity)
+  - [Run it locally](#run-it-locally)
+  - [Used gems](#used-gems)
+- [Testing](#testing)
+  - [How to test this app locally](#how-to-test-this-app-locally)
+  - [Environments and Tools](#environments-and-tools)
 
 ## General information
 Those who want to see the exercise that started this whole project, see it in Portuguese [here](http://dojopuzzles.com/problemas/exibe/caixa-eletronico/). Or in English [here](https://cs50.harvard.edu/x/2020/psets/1/cash/). This app was built on top of the Portuguese-written exercise, but the logic is the same.
@@ -17,22 +29,12 @@ And remember => HAVE FUN! This can serve as a easy calculator, as a guide for yo
 
 TAKE IT! It's OURS :wink:
 
-# Table of contents
 
-- [Features AKA User Stories](#features-aka-user-stories)
-- [CRUD Operations](#crud-operations)
-  - [Create](#create)
-- [Run it locally](#run-it-locally)
-- [Additional Information](#additional-information)
-  - [Used gems](#used-gems)
-  - [Testing](#testing)
-    - [Environments and Tools](#environments-and-tools)
-    - [How to test this app locally](#how-to-test-this-app-locally)
-
-## Features AKA User Stories
+### User Stories
+Using this API, we have the 
 * AN AUTHENICATED USER CAN Withdraw bank notes and save their transaction history.
 * AN AUTHENICATED USER CAN View their previous transaction histories as a whole.
-* AN AUTHENTICATED USER CANW Withdraw bank notes, but can't save their transaction logs.
+* AN AUTHENTICATED USER CAN Withdraw bank notes, but can't save their transaction logs.
 
 In simple words, its a CRU(~D~) application that serves as an ATM machine.
 
@@ -44,7 +46,11 @@ Once the user inputs data (the amount they want), the API will output the amount
 `{"id":1,"amount":180,"banknotes":"{:G=>1, :O=>1, :M=>1, :A=>1}"`
 
 
-## Run it locally
+
+
+## Interactivity
+
+### Run it locally
 
 If you don't have the following requirements physically inside your machine, I recommend installing them with the respective versions:
 * Ruby 2.6.5
@@ -61,8 +67,6 @@ $ rails db:migrate
 $ rails s
 ```
 
-## Additional information
-
 ### Used gems
 For development
 
@@ -76,14 +80,6 @@ For testing
 * Manual Testing ;) (NOT A GEM, BUT CAREFUL HUMAN LABOR)
 
 ## Testing
-### Environments and Tools
-
-This app was tested locally with different tools and in different environments:
-* Third-party via Postman
-* Test environment via RSpec (ran it locally)
-* Development environment via Chrome Debugger
-* Production environment via Heroku
-
 ### How to test this app locally
 After cloning...
 
@@ -99,3 +95,13 @@ $ rspec spec/services/withdrawal_services_spec.rb
 
 ...
 ```
+
+### Environments and Tools
+
+This app was tested locally with different tools and in different environments:
+* Third-party via Postman
+* Test environment via RSpec (ran it locally)
+* Development environment via Chrome Debugger
+* Production environment via Heroku
+
+

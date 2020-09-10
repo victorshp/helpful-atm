@@ -2,8 +2,9 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   before_action :set_withdrawal, only: [:show]
 
   def index
+    @withdrawals = Withdrawal.all
   end
-  
+
   def show
   end
 

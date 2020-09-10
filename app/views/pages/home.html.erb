@@ -1,0 +1,38 @@
+<script>
+  const changeBurger = () => {
+    document.querySelector(".hamburger").classList.toggle("switch-patties");
+    document.querySelector("header").classList.toggle("reveal");
+  };
+</script>
+
+<header>
+  <div class="in-small">
+    <a href="/"><%= image_tag "helpful-atm-logo.png", alt: "Helpful ATM Logo", id:"logo" %></a>
+    <div class="hamburger" onclick="changeBurger()">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </div>
+  <ul class="navbar-links">
+    <li><a href="https://github.com/victorshp/helpful-atm/blob/master/README.md">Documentation</a></li>
+    <li><a href="/users/sign_in">Login</a></li>
+  </ul>
+    <a href="/users/sign_up" class="contact"><button>Sign Up</button></a>
+    <!-- <a href="/users/sign_out" data-method="delete" class="contact"><button>Destroy Session</button></a> -->
+</header>
+
+<div id="greetings_sign">
+  <h1>Welcome to Helpful ATM!</h1>
+  <div class="breathe">
+    <p>To run this API on this environment, you will have to:</p>
+    <p>(1) Create user</p>
+    <p>(2) Verify email para receber API token
+    <p>(3) Then you'll interact with the app and save your logs</p>
+    <p>(4) Don't forget to have FUN!</p>
+    </ol>
+  </div>
+  <div class="breathe">
+    <a href="/"><<< Postman Documentation for Experienced Users >>></a>
+  </div>
+</div>

@@ -25,10 +25,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-# Use Simple Token Authentication as a simple form of user authentication
-gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
 # Use Devise for user authentication
 gem 'devise', '~> 4.7', '>= 4.7.2'
+# Use Simple Token Authentication as a simple form of user authentication
+gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
+# Use Pundit for user's behavior's authorization
+# gem 'pundit', '~> 2.1'
+# Use SendGrid in production environment as Heroku Addon to send token to signed-up user
+gem 'sendgrid-ruby', '~> 5.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

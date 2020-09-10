@@ -68,11 +68,17 @@ $ rails s
 ```
 
 ### Used gems
+
+For stylesheests
+
+* bootstrap (Twitter)
+
 For development
 
 * devise (user authentication)
 * pundit (behavior authorization)
 * simple_token_authentication (token authentication)
+* sendgrid-ruby (transactional emails; send token to new user)
 
 For testing
 

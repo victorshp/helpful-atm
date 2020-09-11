@@ -9,13 +9,14 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   end
 
   def create
-    withdrawal = Withdrawal.new(withdrawal_params)
-    withdrawal.banknotes = WithdrawalService.new(withdrawal).notes_amount
-    if withdrawal.successful
-      withdrawal.save!
-      render nothing: true, status: :created
+    @withdrawal = Withdrawal.new(withdrawal_params)
+    # .include(:user)
+    # NO N+1 Queries! Lets pull the user here.
+    @withdrawal.banknotes = WithdrawalService.new(@withdrawal.amount).notes_amount
+    if @withdrawal.save
+      render :show, status: :created
     else
-      render json: @withdrawal
+      render json: { errors: @withdrawal.errors }, status: :unprocessable_entity
     end
   end
 
@@ -30,3 +31,4 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   end
 
 end
+

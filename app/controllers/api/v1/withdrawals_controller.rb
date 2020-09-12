@@ -5,8 +5,6 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   def index
     @withdrawals = Withdrawal.where(user: current_user)
     render json: @withdrawals, only: [:id, :amount, :banknotes, :created_at]
-    # render :json => @programs, :include => {:insurer => {:only => :name}}, :except => [:created_at, :updated_at]
-
   end
 
   def show

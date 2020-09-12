@@ -15,11 +15,14 @@
     </div>
   </div>
   <ul class="navbar-links">
-    <li><a href="https://github.com/victorshp/helpful-atm/blob/master/README.md">Documentation</a></li>
+  <% if !user_signed_in? %>
+    <li><a href="https://github.com/victorshp/helpful-atm">Documentation</a></li>
     <li><a href="/users/sign_in">Login</a></li>
   </ul>
     <a href="/users/sign_up" class="contact"><button>Sign Up</button></a>
-    <!-- <a href="/users/sign_out" data-method="delete" class="contact"><button>Destroy Session</button></a> -->
+  <% else %>
+    <a href="/users/sign_out" data-method="delete" class="contact"><button>Log Out</button></a>
+  <% end %>
 </header>
 
 <div id="signup_sheet">

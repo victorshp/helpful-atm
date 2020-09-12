@@ -32,7 +32,9 @@ To interact with the API and perform CRUD operations, one needs a user and an AP
 
 ## CR(~UD~) Operations
 In simple words, this app a CR(~UD~) API that serves as an ATM machine. You can create a withdrawal and read them.
-CRU(~D~) here...
+CR(~UD~) here...
+
+`Only admin users have fully CRUD authority through the /admin route.`
 
 ### CREATE
 Once the user inputs data (the amount they want), the API will output the amount of bills as per the example shown below:
@@ -96,10 +98,11 @@ For stylesheests
 For development
 
 * devise (user authentication)
-* pundit (behavior authorization)
 * simple_token_authentication (token authentication)
 * sendgrid-ruby (transactional emails; send token to new user)
 * dotenv-rails (prevent exposure of sensitive data)
+# bullet (kill N+1 queries on db)
+* rails_admin (full admin dashboard for admin users ONLY)
 
 For testing
 

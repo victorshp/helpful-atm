@@ -3,11 +3,13 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   before_action :set_withdrawal, only: [:show]
 
   def index
+    # Render a JSON of all withdrawals the user has made
     @withdrawals = Withdrawal.where(user: current_user)
     render json: @withdrawals, only: [:id, :amount, :banknotes, :created_at]
   end
 
   def show
+    # Render a JSON of the withdrawal if the user has created it
     if @withdrawal.user == current_user
       render json: @withdrawal, only: [:id, :amount, :banknotes, :created_at]
     else
@@ -16,9 +18,11 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   end
 
   def create
+    # Create a withdrawal using WithdrawalService
     @withdrawal = Withdrawal.new(withdrawal_params)
     @withdrawal.banknotes = WithdrawalService.new(@withdrawal.amount).notes_amount
     @withdrawal.user = current_user
+    # Save it or show the errors
     if @withdrawal.save
       render :show, status: :created
     else

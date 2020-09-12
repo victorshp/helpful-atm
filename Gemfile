@@ -29,12 +29,14 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', '~> 4.7', '>= 4.7.2'
 # Use Simple Token Authentication as a simple form of user authentication
 gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
-# Use Pundit for user's behavior's authorization
-# gem 'pundit', '~> 2.1'
 # Use SendGrid in production environment as Heroku Addon to send token to signed-up user
 gem 'sendgrid-ruby', '~> 5.0'
-# Used Dotenv-Rails to use SendGrid token without exposign it
+# Use Dotenv-Rails to use SendGrid token without exposign it
 gem 'dotenv-rails'
+# Use Bullet to Kill N+1 queries
+gem 'bullet', '~> 6.1'
+# Use Rails_Admin for Admin users to access the db mainly. Particulararly good for non-developer admins
+gem 'rails_admin', '~> 2.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

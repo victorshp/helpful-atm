@@ -33,6 +33,8 @@ gem 'simple_token_authentication', '~> 1.15', '>= 1.15.1'
 # gem 'pundit', '~> 2.1'
 # Use SendGrid in production environment as Heroku Addon to send token to signed-up user
 gem 'sendgrid-ruby', '~> 5.0'
+# Used Dotenv-Rails to use SendGrid token without exposign it
+gem 'dotenv-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

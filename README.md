@@ -78,6 +78,7 @@ For development
 * pundit (behavior authorization)
 * simple_token_authentication (token authentication)
 * sendgrid-ruby (transactional emails; send token to new user)
+* dotenv-rails (prevent exposure of sensitive data)
 
 For testing
 

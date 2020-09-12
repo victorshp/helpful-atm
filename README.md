@@ -15,16 +15,18 @@ These are the existing bills:
   - [User Stories](#user-stories)
 - [CRUD Operations](#crud-operations)
   - [Create](#create)
+  - [Read](#read)
+  - [Update](#update)
+  - [Destroy](#destroy)
 - [Interactivity](#interactivity)
   - [Run it locally](#run-it-locally)
   - [Used gems](#used-gems)
 - [Testing](#testing)
   - [How to test this app locally](#how-to-test-this-app-locally)
   - [Environments and Tools](#environments-and-tools)
+- [Other Information](#other-information)
 
 ## General information
-Those who want to see the exercise that started this whole project, see it in Portuguese [here](http://dojopuzzles.com/problemas/exibe/caixa-eletronico/). Or in English [here](https://cs50.harvard.edu/x/2020/psets/1/cash/). This app was built on top of the Portuguese-written exercise, but the logic is the same.
-
 :star::star::star:**IMPORTANT**:star::star::star:
 To interact with the API and perform CRUD operations, one needs a user and an API token. To create a user, access the [Heroku App](http://helpful-atm.herokuapp.com/) and create a user. The API token will be sent to the email you registered when signing up.
 
@@ -70,6 +72,14 @@ curl -s GET                                             \
        http://helpful-atm.herokuapp.com/api/v1/withdrawals/3
 ```
 
+### UPDATE
+
+Avaiable for admin users in /admin route
+
+### DELETE
+
+Avaiable for admin users in /admin route
+
 ## Interactivity
 
 ### Run it locally
@@ -91,22 +101,19 @@ $ rails s
 
 ### Used gems
 
-For stylesheests
-
-* bootstrap (Twitter)
-
 For development
 
 * devise (user authentication)
 * simple_token_authentication (token authentication)
 * sendgrid-ruby (transactional emails; send token to new user)
 * dotenv-rails (prevent exposure of sensitive data)
-# bullet (kill N+1 queries on db)
 * rails_admin (full admin dashboard for admin users ONLY)
 
 For testing
 
-* rspec-rails (only test environment)
+* rspec-rails (powerful Rails testing framework)
+* shoulda (simplifies testing)
+* shoulda-callback-matchers (simplifies testing)
 * Manual Testing :wink: (NOT A GEM, BUT ATTENTIVE HUMAN WORK)
 
 ## Testing
@@ -120,8 +127,8 @@ $ rspec
 
 To test seperately
 ```
-$ rspec spec/services/withdrawal_services_spec.rb
 # Runs WithdrawalServices tests
+$ rspec spec/services/withdrawal_services_spec.rb
 
 ...
 ```
@@ -134,4 +141,6 @@ This app was tested locally with different tools and in different environments:
 * Development environment
 * Production environment IN Heroku
 
+## Other Information
 
+Those who want to see the exercise that started this whole project, see it in Portuguese [here](http://dojopuzzles.com/problemas/exibe/caixa-eletronico/). Or in English [here](https://cs50.harvard.edu/x/2020/psets/1/cash/). This app was built on top of the Portuguese-written exercise, but the logic is the same.

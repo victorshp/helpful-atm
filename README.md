@@ -25,19 +25,13 @@ These are the existing bills:
 ## General information
 Those who want to see the exercise that started this whole project, see it in Portuguese [here](http://dojopuzzles.com/problemas/exibe/caixa-eletronico/). Or in English [here](https://cs50.harvard.edu/x/2020/psets/1/cash/). This app was built on top of the Portuguese-written exercise, but the logic is the same.
 
-And remember => HAVE FUN! This can serve as a easy calculator, as a guide for you to code your own similar application for learning or, who knows, transform it into a full-blown product!
+:star::star::star:**IMPORTANT**:star::star::star:
+To interact with the API and perform CRUD operations, one needs a user and an API token. To create a user, access the [Heroku App](http://helpful-atm.herokuapp.com/) and create a user. The API token will be sent to the email you registered when signing up.
 
-TAKE IT! It's OURS :wink:
+`Alternatively, you can clone this repo and create a user in the Terminal.`
 
-
-### User Stories
-Using this API, we have the 
-* A User can withdraw bank notes and save their transaction history.
-* A User can view their previous transaction histories as a whole and when each transaction occurred.
-
-In simple words, its a CRU(~D~) application that serves as an ATM machine.
-
-## CRU(~D~) Operations
+## CR(~UD~) Operations
+In simple words, this app a CR(~UD~) API that serves as an ATM machine. You can create a withdrawal and read them.
 CRU(~D~) here...
 
 ### CREATE
@@ -45,7 +39,7 @@ Once the user inputs data (the amount they want), the API will output the amount
 `{"id":1,"amount":180,"banknotes":"{:G=>1, :O=>1, :M=>1, :A=>1}"`
 
 
-
+### READ
 
 ## Interactivity
 

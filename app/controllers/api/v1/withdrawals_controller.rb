@@ -3,10 +3,15 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   before_action :set_withdrawal, only: [:show]
 
   def index
-    @withdrawals = Withdrawal.all
+    @withdrawals = Withdrawal.where(user: current_user)
   end
 
   def show
+    if @withdrawal.user == current_user
+      @withdrawal 
+    else
+      render json: { message: "You did not make this withdrawal. You are not allowed to see it."}
+    end
   end
 
   def create

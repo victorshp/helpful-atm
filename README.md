@@ -101,7 +101,7 @@ $ rspec spec/services/withdrawal_services_spec.rb
 This app was tested locally with different tools and in different environments:
 * Third-party via Postman
 * Test environment via RSpec (ran it locally)
-* Development environment via Chrome Debugger
-* Production environment via Heroku
+* Development environment
+* Production environment IN Heroku
 
 

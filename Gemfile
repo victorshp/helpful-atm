@@ -35,9 +35,7 @@ gem 'sendgrid-ruby', '~> 5.0'
 gem 'dotenv-rails'
 # Use Rails_Admin for Admin users to access the db mainly. Particulararly good for non-developer admins
 gem 'rails_admin', '~> 2.0'
-# Use shoulda to simplify testing
-gem 'shoulda',                      '~> 3.5'
-gem 'shoulda-callback-matchers',    '~> 1.1', '>= 1.1.3'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -62,8 +60,11 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  # Unit testing with Rspec
+  # Use Rspec for powerful testing
   gem 'rspec-rails', '>=4.0.1'
+  # Use Shoulda to simplify testing
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

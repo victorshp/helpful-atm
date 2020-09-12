@@ -130,6 +130,14 @@ To test seperately
 # Runs WithdrawalServices tests
 $ rspec spec/services/withdrawal_services_spec.rb
 
+# Runs WithdrawalsController tests
+$ rspec spec/controllers/withdrawasl_controller_spec.rb
+
+# Runs Withdrawal model tests
+$ rspec spec/models/withdrawal_spec.rb
+
+# Runs User model tests
+$ rspec spec/models/withdrawal_spec.rb
 ...
 ```
 

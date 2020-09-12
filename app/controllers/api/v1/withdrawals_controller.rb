@@ -1,4 +1,5 @@
 class Api::V1::WithdrawalsController < Api::V1::BaseController
+  acts_as_token_authentication_handler_for User, only: [:create]
   before_action :set_withdrawal, only: [:show]
 
   def index
@@ -13,10 +14,11 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
     # .include(:user)
     # NO N+1 Queries! Lets pull the user here.
     @withdrawal.banknotes = WithdrawalService.new(@withdrawal.amount).notes_amount
+    @withdrawal.user = current_user
     if @withdrawal.save
       render :show, status: :created
     else
-      render json: { errors: @withdrawal.errors }, status: :unprocessable_entity
+      render_error
     end
   end
 
@@ -27,8 +29,12 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   end
 
   def withdrawal_params
-    params.require(:withdrawal).permit(:amount)
+    params.require(:withdrawal).permit(:amount, :user_id)
   end
 
+    def render_error
+      render json: { errors: @withdrawal.errors.full_messages },
+        status: :unprocessable_entity
+    end
 end
 

@@ -32,9 +32,8 @@ TAKE IT! It's OURS :wink:
 
 ### User Stories
 Using this API, we have the 
-* AN AUTHENICATED USER CAN Withdraw bank notes and save their transaction history.
-* AN AUTHENICATED USER CAN View their previous transaction histories as a whole and when each transaction occurred.
-* AN AUTHENTICATED USER CAN Withdraw bank notes, but can't save their transaction logs.
+* A User can withdraw bank notes and save their transaction history.
+* A User can view their previous transaction histories as a whole and when each transaction occurred.
 
 In simple words, its a CRU(~D~) application that serves as an ATM machine.
 

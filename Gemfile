@@ -37,12 +37,24 @@ gem 'dotenv-rails'
 gem 'rails_admin', '~> 2.0'
 
 
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Use Rspec for powerful testing
+  gem 'rspec-rails', '>=4.0.1'
+  # Use Shoulda to simplify testing
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.3'
+  # Use Faker to randomize samples and work with Factory Bot
+  gem 'faker', '>=2.13.0'
+  # Use Database_Cleaner to properly clean the database
+  gem 'database_cleaner', '>=1.8.5'
+  # Use pry as a Debugger
+  gem 'pry', '~> 0.10.3'
 end
 
 group :development do
@@ -60,11 +72,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-  # Use Rspec for powerful testing
-  gem 'rspec-rails', '>=4.0.1'
-  # Use Shoulda to simplify testing
-  gem 'shoulda', '~> 3.5'
-  gem 'shoulda-callback-matchers', '~> 1.1', '>= 1.1.3'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -114,7 +114,13 @@ For testing
 * rspec-rails (powerful Rails testing framework)
 * shoulda (simplifies testing)
 * shoulda-callback-matchers (simplifies testing)
+* faker (for generating random samples)
+* database_cleaner (properly clean the database)
 * Manual Testing :wink: (NOT A GEM, BUT ATTENTIVE HUMAN WORK)
+
+For debugging
+
+* pry (quite none like this debugger)
 
 ## Testing
 ### How to test this app locally
@@ -131,7 +137,7 @@ To test seperately
 $ rspec spec/services/withdrawal_services_spec.rb
 
 # Runs WithdrawalsController tests
-$ rspec spec/controllers/withdrawasl_controller_spec.rb
+$ rspec spec/controllers/withdrawals_controller_spec.rb
 
 # Runs Withdrawal model tests
 $ rspec spec/models/withdrawal_spec.rb

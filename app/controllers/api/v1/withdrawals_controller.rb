@@ -24,7 +24,7 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
     @withdrawal.user = current_user
     # Save it or show the errors
     if @withdrawal.save
-      render :show, status: :created
+      render json: @withdrawal, only: [:id, :amount, :banknotes, :created_at], status: :created
     else
       render_error
     end

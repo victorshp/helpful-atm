@@ -38,8 +38,35 @@ CRU(~D~) here...
 Once the user inputs data (the amount they want), the API will output the amount of bills as per the example shown below:
 `{"id":1,"amount":180,"banknotes":"{:G=>1, :O=>1, :M=>1, :A=>1}"`
 
+```
+curl -i -X POST                                         \
+       -H 'Content-Type: application/json'              \
+       -H 'X-User-Email: john@example.org'              \
+       -H 'X-User-Token: xxxxxxxxxxxxxxxxxxxx'          \
+       -d '{ "amount": 180 }'                           \
+       http://helpful-atm.herokuapp.com/api/v1/withdrawals/
+```
 
 ### READ
+To show all withdrawals that your user has made:
+
+```
+curl -s GET                                             \
+       -H 'Content-Type: application/json'              \
+       -H 'X-User-Email: john@example.org'              \
+       -H 'X-User-Token: xxxxxxxxxxxxxxxxxxxx'          \
+       http://helpful-atm.herokuapp.com/api/v1/withdrawals/
+```
+
+To show one specific withdrawal that your user has made:
+
+```
+curl -s GET                                             \
+       -H 'Content-Type: application/json'              \
+       -H 'X-User-Email: john@example.org'              \
+       -H 'X-User-Token: xxxxxxxxxxxxxxxxxxxx'          \
+       http://helpful-atm.herokuapp.com/api/v1/withdrawals/3
+```
 
 ## Interactivity
 

@@ -138,7 +138,6 @@ $ rspec spec/models/withdrawal_spec.rb
 
 # Runs User model tests
 $ rspec spec/models/withdrawal_spec.rb
-...
 ```
 
 ### Environments and Tools

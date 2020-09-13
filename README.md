@@ -28,7 +28,7 @@ These are the existing bills:
 
 ## General information
 :star::star::star:**IMPORTANT**:star::star::star:
-To interact with the API and perform CRUD operations, one needs a user and an API token. To create a user, access the [Heroku App](http://helpful-atm.herokuapp.com/) and create a user. The API token will be sent to the email you registered when signing up.
+To interact with the API and perform CRUD operations, one first needs to signup and an receive a user email and user API token. To create a user, access the [Heroku App](http://helpful-atm.herokuapp.com/) and create a user. The API token will be sent to the email you registered when signing up.
 
 `Alternatively, you can clone this repo and create a user in the Terminal.`
 
@@ -49,6 +49,8 @@ curl -i -X POST                                         \
        -H 'X-User-Token: xxxxxxxxxxxxxxxxxxxx'          \
        -d '{ "amount": 180 }'                           \
        http://helpful-atm.herokuapp.com/api/v1/withdrawals/
+
+# With curls in Heroku environment, don't forget to use the token you received in your email.
 ```
 
 ### READ
@@ -116,6 +118,7 @@ For testing
 * shoulda-callback-matchers (simplifies testing)
 * faker (for generating random samples)
 * database_cleaner (properly clean the database)
+* rails-controller-testing (to test controllers)
 * Manual Testing :wink: (NOT A GEM, BUT ATTENTIVE HUMAN WORK)
 
 For debugging

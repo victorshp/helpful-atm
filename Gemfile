@@ -55,6 +55,8 @@ group :development, :test do
   gem 'database_cleaner', '>=1.8.5'
   # Use pry as a Debugger
   gem 'pry', '~> 0.10.3'
+  # Use Rails-Controller-Testing to test controllers!
+  gem 'rails-controller-testing', '~> 0.0.3'
 end
 
 group :development do

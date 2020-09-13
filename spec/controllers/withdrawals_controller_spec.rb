@@ -1,39 +1,31 @@
-RSpec.describe "WithdrawalsController", type: 'request' do
-  describe "should perform GET" do
+require 'pry'
+require 'spec_helper'
 
-      it "and render correctly with the right params" do
-        u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20))
-        u.save
-        w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
-        w.banknotes = WithdrawalService.new(w.amount).notes_amount
-        w.user = u
-        expect(w.save).to eq(true)
-      end
+RSpec.describe "WithdrawalsController", type: :request  do
 
-      it "and not render correctly under the wrong params" do
-        w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
-        w.banknotes = WithdrawalService.new(w.amount).notes_amount
-        expect(w.save).to eq(false)
-      end
+  describe 'GET #index' do
 
-  end
-
-  describe "should perform POST" do
-
-    it "and render correctly with the right params" do
+    it "returns an array of withdrawal instances" do
       u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20))
       u.save
+      
       w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
       w.banknotes = WithdrawalService.new(w.amount).notes_amount
       w.user = u
-      expect(w.save).to eq(true)
-    end
+      w.save
 
-    it "and not render correctly under the wrong params" do
-      w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
-      w.banknotes = WithdrawalService.new(w.amount).notes_amount
-      expect(w.save).to eq(false)
+      get '/api/v1/withdrawals', headers: { "Content-Type" => "application/json", "X-User-Email" => u.email, "X-User-Token" => u.authentication_token }
+      json = JSON.parse(response.body)
+      binding.pry
+      expect(json).to render_template(:index)
     end
 
   end
+
+  describe 'GET #show' do    
+  end
+
+  describe 'POST #create' do    
+  end
+
 end

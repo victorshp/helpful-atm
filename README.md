@@ -16,7 +16,7 @@ The strucut
 - [General Information](#general-information)
 - [Technical Information](#technical-information)
   - [Production Environment](#production-environment)
-  - [Development Environment](#development environment)
+  - [Development Environment](#development-environment)
   - [CRUD Operations](#crud-operations)
     - [Create](#create)
     - [Read](#read)
@@ -35,16 +35,17 @@ This app is an MVC-based framework and was integrated with the following attribu
 * Concepts of OOP incorporated: Abstraction, Inheritance, Encapsulation
 * No N+1 queries! Views rendered as jsons through the controller (no need for separate views)
 * Skinny Model, Skinny Controller; Logic separate from both were rendered as Services (./app/services)
-* Admin dashboard (/admin route) for admin users to manipulate data with a clear UI
 * Model validations and Controller appopriate logic
+* Admin dashboard (get /admin) for admin-only users to manipulate data with a clear UI
 * Unit Testing through Rails' Rspec testing framework
 * Relational Database through PostgreSQL
 
-Look at the screenshots directory (./screeshots) for some visual representation.
+Look at the screenshots directory (./screeshots) for some visual representation. Also! This site is fully responsive (mobile first).
 
 ## Technical Information
 ### Production Environment
 :star::star::star:**IMPORTANT**:star::star::star:
+
 To interact with the API and perform CRUD operations, one first needs to signup and an receive a user email and user API token (via SendGrid). To create a user, access the [Heroku App](http://helpful-atm.herokuapp.com/) and create a user. The API token will be sent to the email you registered when signing up. Notice that this is production environment, meaning the token you receive from creating a user here isn't valid in development!
 
 `Alternatively, you can clone this repo and create a user in the Terminal.`
@@ -122,7 +123,7 @@ For development
 
 * devise (user authentication)
 * simple_token_authentication (token authentication)
-* sendgrid-ruby (transactional emails; send token to new user)
+* sendgrid-ruby (transactional emails; send API Token to new user)
 * dotenv-rails (prevent exposure of sensitive data)
 * rails_admin (full admin dashboard for admin users ONLY)
 
@@ -132,9 +133,9 @@ For testing
 * shoulda (simplifies testing)
 * shoulda-callback-matchers (simplifies testing)
 * faker (for generating random samples)
-* database_cleaner (properly clean the database)
-* rails-controller-testing (to test controllers)
-* Manual Testing :wink: (NOT A GEM, BUT ATTENTIVE HUMAN WORK)
+* database_cleaner (for properly cleaning the database)
+* rails-controller-testing (for testing controllers)
+* Manual Testing :wink:  (NOT A GEM, BUT ATTENTIVE HUMAN WORK)
 
 For debugging
 

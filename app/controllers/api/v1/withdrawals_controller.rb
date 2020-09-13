@@ -3,7 +3,7 @@ class Api::V1::WithdrawalsController < Api::V1::BaseController
   before_action :set_withdrawal, only: [:show]
 
   def index
-    # Render a JSON of all withdrawals the user has made
+    # Render a JSON of all withdrawals the user has instanciated and registered
     @withdrawals = Withdrawal.where(user: current_user)
     render json: @withdrawals, only: [:id, :amount, :banknotes, :created_at]
   end

@@ -5,27 +5,101 @@ RSpec.describe "WithdrawalsController", type: :request  do
 
   describe 'GET #index' do
 
-    it "returns an array of withdrawal instances" do
-      u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20))
-      u.save
+    it "renders an array of the user's withdrawal instances if they have at least one record in the database and the right params are given" do
+      @u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20)) 
+      @u.save
       
-      w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
-      w.banknotes = WithdrawalService.new(w.amount).notes_amount
-      w.user = u
-      w.save
+      @w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
+      @w.banknotes = WithdrawalService.new(@w.amount).notes_amount
+      @w.user = @u
+      @w.save
 
-      get '/api/v1/withdrawals', headers: { "Content-Type" => "application/json", "X-User-Email" => u.email, "X-User-Token" => u.authentication_token }
+      get '/api/v1/withdrawals', headers: { "Content-Type" => "application/json", "X-User-Email" => @u.email, "X-User-Token" => @u.authentication_token }
       json = JSON.parse(response.body)
-      binding.pry
-      expect(json).to render_template(:index)
+      # json[0] will be the only instance of the DB created by Withdrawal, as the db is cleaned. We're just passing it back to become a Withdrawal instance.
+      expect(Withdrawal.new(json[0])).to eq(Withdrawal.first)
     end
 
+    it "returns an empty array if the user inputs the wrong params" do
+      @u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20))
+      @u.save
+      
+      @w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
+      @w.banknotes = WithdrawalService.new(@w.amount).notes_amount
+      @w.user = @u
+      @w.save
+
+      # Different from the above test, this one had the user's API token missing.
+      get '/api/v1/withdrawals', headers: { "Content-Type" => "application/json", "X-User-Email" => @u.email, "X-User-Token" => '' }
+      json = JSON.parse(response.body)
+      expect(Withdrawal.new(json[0])).not_to eq(Withdrawal.first)
+    end
+
+    it "returns an empty array if the user has no records in the database" do
+      @u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20))
+      @u.save
+
+      get '/api/v1/withdrawals', headers: { "Content-Type" => "application/json", "X-User-Email" => @u.email, "X-User-Token" => @u.authentication_token }
+      json = JSON.parse(response.body)
+      expect(Withdrawal.new(json[0])).not_to eq(Withdrawal.first)
+    end
   end
 
-  describe 'GET #show' do    
+  describe 'GET #show' do
+    it "renders the withdrawal instance if the user that requested that show has created it" do
+      @u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20))
+      @u.save
+      
+      @w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
+      @w.banknotes = WithdrawalService.new(@w.amount).notes_amount
+      @w.user = @u
+      @w.save
+
+      get "/api/v1/withdrawals/#{@w.id}", headers: { "Content-Type" => "application/json", "X-User-Email" => @u.email, "X-User-Token" => @u.authentication_token }
+      json = JSON.parse(response.body)
+      expect(Withdrawal.new(json)).to be_instance_of(Withdrawal)
+    end
+
+    it "does not render the withdrawal instance if the user that requested that show hasn't created it" do
+      @u1 = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20))
+      @u1.save
+
+      @u2 = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20))
+      @u2.save
+
+      @w = Withdrawal.new(amount: Faker::Number.between(from: 10, to: 9000000000000000000))
+      @w.banknotes = WithdrawalService.new(@w.amount).notes_amount
+      @w.user = @u2
+      @w.save
+
+
+      get "/api/v1/withdrawals/#{@w.id}", headers: { "Content-Type" => "application/json", "X-User-Email" => @u1.email, "X-User-Token" => @u1.authentication_token }
+      json = JSON.parse(response.body)
+      expect(response[:withdrawal]).to eq(nil)
+    end
   end
 
-  describe 'POST #create' do    
+  describe 'POST #create' do
+    it "does post with valid params" do
+
+      @u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20)) 
+      @u.save
+
+      withdrawal_params = Withdrawal.new(amount: 180, user_id: @u.id)
+      
+      post '/api/v1/withdrawals', params: withdrawal_params.to_json , headers: { "Content-Type" => "application/json", "X-User-Email" => @u.email, "X-User-Token" => @u.authentication_token  }
+      expect(response).to have_http_status(:created)
+    end
+
+    it "doesn't post with invalid params" do  
+      @u = User.new(email: Faker::Internet.email, password: "password", authentication_token: Faker::String.random(length: 20)) 
+      @u.save
+      
+      withdrawal_params = Withdrawal.new(amount: 180, user_id: '')
+
+      post '/api/v1/withdrawals', params: withdrawal_params.to_json, headers: { "Content-Type" => "application/json", "X-User-Email" => '', "X-User-Token" => @u.authentication_token }
+      expect(response).to have_http_status(:unauthorized)    
+    end
   end
 
 end

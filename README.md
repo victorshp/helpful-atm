@@ -10,35 +10,69 @@ These are the existing bills:
 
 `# So a $180 withdrawal will provide the user with one of each bill and a $90 withdrawal would amount to 1 bill of $50 and 2 bills of $20.`
 
+The strucut
+
 # Table of contents
 - [General Information](#general-information)
-  - [User Stories](#user-stories)
-- [CRUD Operations](#crud-operations)
-  - [Create](#create)
-  - [Read](#read)
-  - [Update](#update)
-  - [Destroy](#destroy)
-- [Interactivity](#interactivity)
-  - [Run it locally](#run-it-locally)
+- [Technical Information](#technical-information)
+  - [Production Environment](#production-environment)
+  - [Development Environment](#development environment)
+  - [CRUD Operations](#crud-operations)
+    - [Create](#create)
+    - [Read](#read)
+    - [Update](#update)
+    - [Destroy](#destroy)
   - [Used gems](#used-gems)
 - [Testing](#testing)
   - [How to test this app locally](#how-to-test-this-app-locally)
   - [Environments and Tools](#environments-and-tools)
 - [Other Information](#other-information)
 
-## General information
+## General Information
+
+This app is an MVC-based framework and was integrated with the following attributes:
+
+* Concepts of OOP incorporated: Abstraction, Inheritance, Encapsulation
+* No N+1 queries! Views rendered as jsons through the controller (no need for separate views)
+* Skinny Model, Skinny Controller; Logic separate from both were rendered as Services (./app/services)
+* Admin dashboard (/admin route) for admin users to manipulate data with a clear UI
+* Model validations and Controller appopriate logic
+* Unit Testing through Rails' Rspec testing framework
+* Relational Database through PostgreSQL
+
+Look at the screenshots directory (./screeshots) for some visual representation.
+
+## Technical Information
+### Production Environment
 :star::star::star:**IMPORTANT**:star::star::star:
-To interact with the API and perform CRUD operations, one first needs to signup and an receive a user email and user API token. To create a user, access the [Heroku App](http://helpful-atm.herokuapp.com/) and create a user. The API token will be sent to the email you registered when signing up.
+To interact with the API and perform CRUD operations, one first needs to signup and an receive a user email and user API token (via SendGrid). To create a user, access the [Heroku App](http://helpful-atm.herokuapp.com/) and create a user. The API token will be sent to the email you registered when signing up. Notice that this is production environment, meaning the token you receive from creating a user here isn't valid in development!
 
 `Alternatively, you can clone this repo and create a user in the Terminal.`
 
-## CR(~UD~) Operations
+### Development Environment
+
+If you don't have the following requirements physically inside your machine, I recommend installing them with the respective versions:
+* Ruby 2.6.5
+* Rails 6.0.3.2
+* PostgreSQL 12.2
+
+
+To install it locally, clone this repo and run these commands:
+```
+$ gem install bundler
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+$ rails s
+```
+
+### CR(~UD~) Operations
 In simple words, this app a CR(~UD~) API that serves as an ATM machine. You can create a withdrawal and read them.
 CR(~UD~) here...
 
-`Only admin users have fully CRUD authority through the /admin route.`
+`Only admin users have full CRUD authority.`
 
-### CREATE
+#### CREATE
 Once the user inputs data (the amount they want), the API will output the amount of bills as per the example shown below:
 `{"id":1,"amount":180,"banknotes":"{:G=>1, :O=>1, :M=>1, :A=>1}"`
 
@@ -50,10 +84,9 @@ curl -i -X POST                                         \
        -d '{ "amount": 180 }'                           \
        http://helpful-atm.herokuapp.com/api/v1/withdrawals/
 
-# With curls in Heroku environment, don't forget to use the token you received in your email.
 ```
 
-### READ
+#### READ
 To show all withdrawals that your user has made:
 
 ```
@@ -74,32 +107,14 @@ curl -s GET                                             \
        http://helpful-atm.herokuapp.com/api/v1/withdrawals/3
 ```
 
-### UPDATE
+#### UPDATE
 
 Avaiable for admin users in /admin route
 
-### DELETE
+#### DELETE
 
 Avaiable for admin users in /admin route
 
-## Interactivity
-
-### Run it locally
-
-If you don't have the following requirements physically inside your machine, I recommend installing them with the respective versions:
-* Ruby 2.6.5
-* Rails 6.0.3.2
-* PostgreSQL 12.2
-
-
-To run it locally, clone this repo and run these commands:
-```
-$ gem install bundler
-$ bundle install
-$ rails db:create
-$ rails db:migrate
-$ rails s
-```
 
 ### Used gems
 
@@ -153,9 +168,9 @@ $ rspec spec/models/withdrawal_spec.rb
 
 This app was tested locally with different tools and in different environments:
 * Third-party via Postman
-* Test environment via RSpec (ran it locally)
+* Test environment via RSpec
 * Development environment
-* Production environment IN Heroku
+* Production environment in Heroku
 
 ## Other Information
 

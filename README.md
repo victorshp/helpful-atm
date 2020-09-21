@@ -8,9 +8,16 @@ These are the existing bills:
 * 20
 * 10
 
-`# So a $180 withdrawal will provide the user with one of each bill and a $90 withdrawal would amount to 1 bill of $50 and 2 bills of $20.`
+```
+# So a $180 withdrawal will provide the user with one of each bill and a $90 withdrawal would amount to 1 bill of $50 and 2 bills of $20.
+# The strucuture of a $180 withdrawal would be {:G => 1, :O => 1, :M => 1, :A => 1}
+```
 
-The strucut
+FUN FACT! G-O-M-A represents the abbreviated names of the animals in Brazilian bills
+- Garoupa => 100
+- Onca-pintada => 50
+- Mico-leao-dourado => 20
+- Arara-vermelha => 10
 
 # Table of contents
 - [General Information](#general-information)
